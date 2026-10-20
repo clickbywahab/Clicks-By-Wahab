@@ -5,12 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Clicks By Wahab — Photography Studio, Lahore</title>
 <meta name="description" content="Clicks By Wahab offers portrait, wedding, podcast, birthday and event photography in Lahore, Punjab. Genuine moments, luxury visuals, every time.">
-<link rel="icon" href="https://kommodo.ai/i/fC07Q2RTCESupczK7wC5">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 185 185'%3E%3Crect width='185' height='185' fill='%23000'/%3E%3Cg fill='none' stroke='%23FFB400' stroke-width='11' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M128 47 L123 20 Q121 8 108 8 L68 8 Q60 8 56 16 L50 33 Q48 38 42 38 L18 38 Q6 38 6 50 L6 163 Q6 176 18 176 L112 180 Q122 179 128 171'/%3E%3Cpath d='M118 79 A42 42 0 1 0 132 112'/%3E%3C/g%3E%3C/svg%3E">
 
 <!--
   ============================================================================
   SETUP NOTES FOR WAHAB (read before publishing to GitHub)
   ============================================================================
+  Logo is now an inline SVG (symbol id="logo-icon"), so it needs no image file.
   All photos on this site are currently real, freely-licensed stock photos
   (Pexels / Unsplash, no attribution required) chosen to match each service,
   used as placeholders since your own portfolio photos were never actually
@@ -41,17 +42,17 @@
 <style>
   /* ============================= TOKENS ============================= */
   :root{
-    --pink-deep:#9E1B4D;
-    --pink:#C22D63;
-    --pink-mid:#DE5C87;
-    --pink-soft:#F6C9D8;
-    --blush:#FFF3F6;
+    --pink-deep:#8A5A00;
+    --pink:#B87800;
+    --pink-mid:#FFB400;
+    --pink-soft:#FFE2A0;
+    --blush:#FFF8E8;
     --white:#FFFFFF;
-    --ink:#2B1420;
-    --ink-soft:#6E4956;
+    --ink:#1A1408;
+    --ink-soft:#6B5A3A;
     --gold:#BE9A5A;
-    --line:#F0D9E1;
-    --shadow: 0 20px 50px -25px rgba(158,27,77,.35);
+    --line:#F0E2C0;
+    --shadow: 0 20px 50px -25px rgba(138,90,0,.35);
     --serif:'Cormorant Garamond', serif;
     --sans:'Manrope', sans-serif;
     --label:'Jost', sans-serif;
@@ -108,7 +109,7 @@
   /* ============================= SPLASH ============================= */
   #splash{
     position:fixed; inset:0; z-index:9999;
-    background:linear-gradient(160deg,var(--pink-deep),var(--pink) 60%,var(--pink-mid));
+    background:radial-gradient(ellipse at 50% 45%,#1c1200,#000 70%);
     display:flex; align-items:center; justify-content:center; flex-direction:column;
     transition:opacity .8s ease, visibility .8s ease;
   }
@@ -129,7 +130,7 @@
     0%,100%{ transform:scale(1); opacity:.6; }
     50%{ transform:scale(1.08); opacity:1; }
   }
-  .splash-logo{ width:64px; height:64px; object-fit:contain; filter:brightness(0) invert(1); }
+  .splash-logo{ width:68px; height:68px; color:#FFB400; filter:drop-shadow(0 0 10px rgba(255,180,0,.6)); }
   .splash-name{
     font-family:var(--label); color:#fff; letter-spacing:.35em;
     font-size:.95rem; padding-left:.35em; overflow:hidden;
@@ -155,7 +156,7 @@
   }
   .nav-row{ display:flex; align-items:center; justify-content:space-between; padding:14px 28px; max-width:var(--maxw); margin:0 auto; }
   .brand{ display:flex; align-items:center; gap:12px; }
-  .brand img{ height:52px; width:52px; object-fit:contain; }
+  .brand .logo-svg{ height:50px; width:50px; color:#FFB400; background:#000; padding:7px; border-radius:50%; }
   .brand-text h1{ font-size:1.32rem; line-height:1.1; }
   .brand-text span{ font-family:var(--label); font-size:.68rem; color:var(--pink); letter-spacing:.18em; }
 
@@ -205,22 +206,83 @@
 
   /* ============================= HERO ============================= */
   .hero{
-    position:relative; min-height:96vh; display:flex; align-items:center;
-    padding-top:110px; overflow:hidden;
+    position:relative; min-height:100vh; display:flex; align-items:center;
+    padding-top:96px; overflow:hidden; background:#fff;
   }
-  .hero-bg{
-    position:absolute; inset:0; z-index:0;
-    background:url('https://images.pexels.com/photos/2904063/pexels-photo-2904063.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;
-  }
-  .hero-bg::after{
-    content:''; position:absolute; inset:0;
-    background:linear-gradient(100deg, rgba(30,10,20,.82) 0%, rgba(158,27,77,.55) 48%, rgba(158,27,77,.15) 100%);
-  }
-  .hero-content{ position:relative; z-index:1; max-width:640px; padding:0 28px; margin:0 auto; width:100%; }
-  .hero .eyebrow{ color:var(--pink-soft); }
-  .hero h1{ color:#fff; font-size:clamp(2.6rem,6vw,4.2rem); line-height:1.08; }
-  .hero .desc{ color:rgba(255,255,255,.88); font-size:1.12rem; margin:22px 0 34px; max-width:520px; }
+  .hero-content{ position:relative; z-index:3; max-width:var(--maxw); width:100%; margin:0 auto; padding:0 28px; }
+  .hero-text{ max-width:470px; }
+  .hero .eyebrow{ color:var(--pink); }
+  .hero h1{ color:var(--ink); font-size:clamp(2.4rem,4.6vw,3.9rem); line-height:1.08; }
+  .hero h1 em{ font-style:italic; color:var(--pink); }
+  .hero .desc{ color:var(--ink-soft); font-size:1.08rem; margin:22px 0 34px; }
   .hero-btns{ display:flex; gap:16px; flex-wrap:wrap; }
+
+  /* ---- Neon panel (diagonal dark side) ---- */
+  .hero-panel{
+    position:absolute; top:0; right:0; bottom:0; width:58%; z-index:1;
+    clip-path:polygon(16% 0, 100% 0, 100% 100%, 0 100%);
+    background:
+      radial-gradient(ellipse 60% 55% at 58% 52%, rgba(255,180,0,.20), transparent 70%),
+      #050403;
+    display:flex; align-items:center; justify-content:center; padding-left:9%;
+  }
+  .hero-panel::before{
+    content:''; position:absolute; inset:0; opacity:.5;
+    background:repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0 1px, transparent 1px 3px);
+    pointer-events:none;
+  }
+  #sparkCanvas{ position:absolute; inset:0; width:100%; height:100%; z-index:2; pointer-events:none; }
+  .neon-sign{ position:relative; z-index:1; width:min(560px,88%); height:auto; overflow:visible; }
+
+  .neon-glow{
+    filter:
+      drop-shadow(0 0 3px rgba(255,190,40,.95))
+      drop-shadow(0 0 12px rgba(255,170,0,.85))
+      drop-shadow(0 0 32px rgba(230,140,0,.7));
+  }
+  .neon-white{
+    filter:
+      drop-shadow(0 0 3px rgba(255,255,255,.9))
+      drop-shadow(0 0 14px rgba(255,200,100,.75))
+      drop-shadow(0 0 30px rgba(255,160,0,.55));
+  }
+  .neon-logo{ overflow:visible; }
+
+  .tube{ fill:none; stroke-linecap:round; stroke-linejoin:round; }
+  .frame-outer{ stroke:#FFB400; stroke-width:6; }
+  .frame-inner{ stroke:#FFF1CC; stroke-width:1.6; }
+  .frame-draw{ stroke-dasharray:1; stroke-dashoffset:1; animation:drawTube 2s ease-out 2.5s forwards; }
+  @keyframes drawTube{ to{ stroke-dashoffset:0; } }
+
+  .letters{ fill:none; font-family:'Manrope',sans-serif; font-weight:800; stroke-linejoin:round; }
+  .l-outer{ stroke:#FFB400; stroke-width:5; }
+  .l-inner{ stroke:#FFF3D1; stroke-width:1.4; }
+  .w-outer{ stroke:#FFE08A; stroke-width:3.6; }
+  .w-inner{ stroke:#fff; stroke-width:1.2; }
+  .sub-text{ font-family:'Jost',sans-serif; font-weight:300; fill:#8c7a84; }
+
+  .flick{ opacity:0; animation:neonOn 2.2s linear 3.1s forwards, idleFlicker 8s linear 6s infinite; }
+  .flick.d2{ animation-delay:3.6s, 7s; }
+  .flick.d3{ animation-delay:4.2s, 9s; }
+  .flick.sub{ animation:neonOn 2s linear 4.8s forwards; }
+  @keyframes neonOn{
+    0%,7%{opacity:0} 8%{opacity:1} 10%{opacity:.05} 13%{opacity:1} 16%{opacity:.15}
+    19%{opacity:.9} 22%{opacity:0} 26%{opacity:1} 30%{opacity:.4} 34%{opacity:1} 100%{opacity:1}
+  }
+  @keyframes idleFlicker{
+    0%,91%,100%{opacity:1} 92%{opacity:.35} 93%{opacity:1} 95%{opacity:.55} 96%{opacity:1}
+  }
+
+  @media(max-width:1000px){
+    .hero{ flex-direction:column; align-items:stretch; padding-top:100px; min-height:auto; }
+    .hero-content{ padding-bottom:50px; }
+    .hero-text{ max-width:620px; }
+    .hero-panel{
+      position:relative; width:100%; height:440px; padding-left:0;
+      clip-path:polygon(0 7%, 100% 0, 100% 100%, 0 100%);
+    }
+    .neon-sign{ width:min(520px,92%); }
+  }
 
   /* ============================= ABOUT (home teaser) ============================= */
   .about-grid{ display:grid; grid-template-columns:.95fr 1.05fr; gap:70px; align-items:center; }
@@ -292,7 +354,7 @@
   .gal-grid{ columns:4 260px; column-gap:20px; }
   .gal-grid img{ width:100%; margin-bottom:20px; break-inside:avoid; cursor:pointer; transition:transform .3s ease, filter .3s ease; }
   .gal-grid img:hover{ transform:scale(1.02); filter:brightness(1.04); }
-  #lightbox{ position:fixed; inset:0; background:rgba(20,5,12,.92); z-index:2000; display:none; align-items:center; justify-content:center; padding:40px; }
+  #lightbox{ position:fixed; inset:0; background:rgba(8,6,2,.92); z-index:2000; display:none; align-items:center; justify-content:center; padding:40px; }
   #lightbox.show{ display:flex; }
   #lightbox img{ max-width:90vw; max-height:85vh; object-fit:contain; box-shadow:0 0 60px rgba(0,0,0,.5); }
   #lightbox .close-lb{ position:absolute; top:26px; right:34px; color:#fff; font-size:2rem; font-family:var(--serif); }
@@ -310,12 +372,12 @@
   .svc-hero{ position:relative; height:62vh; min-height:420px; display:flex; align-items:flex-end; }
   .svc-hero .media{ position:absolute; inset:0; z-index:0; overflow:hidden; }
   .svc-hero .media img, .svc-hero .media video{ width:100%; height:100%; object-fit:cover; }
-  .svc-hero .media::after{ content:''; position:absolute; inset:0; background:linear-gradient(0deg, rgba(20,5,12,.88), rgba(20,5,12,.15)); }
+  .svc-hero .media::after{ content:''; position:absolute; inset:0; background:linear-gradient(0deg, rgba(8,6,2,.88), rgba(8,6,2,.15)); }
   .svc-hero-inner{ position:relative; z-index:1; padding:50px 0; color:#fff; }
   .svc-hero-inner .tag{ font-family:var(--label); letter-spacing:.15em; font-size:.78rem; color:var(--pink-soft); }
   .svc-hero-inner h1{ color:#fff; font-size:clamp(2.2rem,5vw,3.4rem); margin-top:10px; }
   .video-badge{ display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.4); padding:7px 16px; font-family:var(--label); font-size:.72rem; color:#fff; letter-spacing:.1em; margin-top:16px; }
-  .video-badge::before{ content:''; width:7px; height:7px; border-radius:50%; background:#ff5a7a; animation:ringPulse 1.4s ease-in-out infinite; }
+  .video-badge::before{ content:''; width:7px; height:7px; border-radius:50%; background:#FFB400; animation:ringPulse 1.4s ease-in-out infinite; }
 
   .svc-detail-grid{ display:grid; grid-template-columns:1.3fr .9fr; gap:70px; }
   .svc-detail-grid .desc{ color:var(--ink-soft); font-size:1.05rem; margin-bottom:26px; }
@@ -363,19 +425,19 @@
   @media(max-width:900px){ .story-grid{ grid-template-columns:1fr; } .values-grid{ grid-template-columns:1fr 1fr; } .stats-strip{ grid-template-columns:1fr 1fr; } .stat{ border-bottom:1px solid rgba(255,255,255,.15);} }
 
   /* ============================= FOOTER ============================= */
-  footer{ background:#1F0D16; color:#EFDDE4; padding:80px 0 0; }
+  footer{ background:#0A0805; color:#F3EBDA; padding:80px 0 0; }
   .foot-grid{ display:grid; grid-template-columns:1.4fr 1fr 1.3fr 1.1fr; gap:50px; padding-bottom:60px; border-bottom:1px solid rgba(255,255,255,.1); }
   .foot-brand{ display:flex; gap:12px; align-items:center; margin-bottom:18px; }
-  .foot-brand img{ height:44px; width:44px; object-fit:contain; filter:brightness(0) invert(1); }
+  .foot-brand .logo-svg{ height:46px; width:46px; color:#FFB400; }
   .foot-brand h3{ color:#fff; font-size:1.2rem; }
-  footer p{ color:#c9adb9; font-size:.92rem; line-height:1.7; }
+  footer p{ color:#b9ad96; font-size:.92rem; line-height:1.7; }
   footer h4{ color:#fff; font-family:var(--label); font-size:.82rem; letter-spacing:.1em; margin-bottom:22px; }
   footer .flinks{ display:grid; gap:12px; }
-  footer .flinks a{ color:#c9adb9; font-size:.94rem; transition:color .25s ease; }
+  footer .flinks a{ color:#b9ad96; font-size:.94rem; transition:color .25s ease; }
   footer .flinks a:hover{ color:var(--pink-soft); }
-  footer .fitem{ display:flex; gap:10px; margin-bottom:16px; font-size:.9rem; color:#c9adb9; }
+  footer .fitem{ display:flex; gap:10px; margin-bottom:16px; font-size:.9rem; color:#b9ad96; }
   footer .fitem b{ color:#fff; display:block; font-weight:500; }
-  .foot-bottom{ display:flex; justify-content:space-between; align-items:center; padding:26px 0; font-size:.82rem; color:#9a7e89; flex-wrap:wrap; gap:10px; }
+  .foot-bottom{ display:flex; justify-content:space-between; align-items:center; padding:26px 0; font-size:.82rem; color:#8a7f6a; flex-wrap:wrap; gap:10px; }
   .foot-social{ display:flex; gap:14px; }
   .foot-social a{ width:38px; height:38px; border:1px solid rgba(255,255,255,.2); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:.85rem; }
   .foot-social a:hover{ background:var(--pink); border-color:var(--pink); }
@@ -403,11 +465,22 @@
 </style>
 </head>
 <body class="locked">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="logo-icon" viewBox="0 0 185 185">
+    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke-width="11" d="M128 47 L123 20 Q121 8 108 8 L68 8 Q60 8 56 16 L50 33 Q48 38 42 38 L18 38 Q6 38 6 50 L6 163 Q6 176 18 176 L52 176 Q60 176 66 178 Q85 182 112 180 Q122 179 128 171"/>
+      <path stroke-width="9" d="M118 79 A42 42 0 1 0 132 112"/>
+      <path stroke-width="5" d="M88 88 A24 24 0 1 1 84 124"/>
+    </g>
+    <path fill="currentColor" d="M126 172 Q134 166 150 166 L180 167.5 L150 169.5 Q136 170 126 175 Z"/>
+  </symbol>
+</svg>
+
 
 <!-- ============================= SPLASH ============================= -->
 <div id="splash">
   <div class="splash-ring">
-    <img class="splash-logo" src="https://kommodo.ai/i/fC07Q2RTCESupczK7wC5" alt="Clicks By Wahab logo">
+    <svg class="splash-logo" role="img" aria-label="Clicks By Wahab logo"><use href="#logo-icon"/></svg>
   </div>
   <div class="splash-name">CLICKS BY WAHAB</div>
   <div class="splash-tag">Photography that feels like you</div>
@@ -417,7 +490,7 @@
 <header>
   <div class="nav-row">
     <a href="#home" class="brand" onclick="closeMobileNav()">
-      <img src="https://kommodo.ai/i/fC07Q2RTCESupczK7wC5" alt="Clicks By Wahab logo">
+      <svg class="logo-svg" role="img" aria-label="Clicks By Wahab logo"><use href="#logo-icon"/></svg>
       <div class="brand-text">
         <h1>Clicks By Wahab</h1>
         <span>PHOTOGRAPHY STUDIO · LAHORE</span>
@@ -458,15 +531,46 @@
 <div class="page active" id="page-home">
 
   <section class="hero">
-    <div class="hero-bg"></div>
     <div class="hero-content">
-      <span class="eyebrow">Portraits · Weddings · Podcasts · Birthdays</span>
-      <h1>Every moment, captured beautifully.</h1>
-      <p class="desc">Clicks By Wahab is a Lahore-based photography studio creating genuine, elegant imagery for portraits, weddings, podcasts and celebrations — with a creative eye for detail.</p>
-      <div class="hero-btns">
-        <a href="#services" class="btn btn-primary">Explore Services</a>
-        <a href="#contact" class="btn btn-ghost-white">Book a Session</a>
+      <div class="hero-text">
+        <span class="eyebrow">Portraits · Weddings · Podcasts · Birthdays</span>
+        <h1>Every moment, <em>captured</em> beautifully.</h1>
+        <p class="desc">Clicks By Wahab is a Lahore-based photography studio creating genuine, elegant imagery for portraits, weddings, podcasts and celebrations — with a creative eye for detail.</p>
+        <div class="hero-btns">
+          <a href="#services" class="btn btn-primary">Explore Services</a>
+          <a href="#contact" class="btn btn-outline">Book a Session</a>
+        </div>
       </div>
+    </div>
+
+    <!-- NEON SIGN PANEL (animated logo) -->
+    <div class="hero-panel" aria-label="Clicks By Wahab neon sign">
+      <canvas id="sparkCanvas"></canvas>
+      <svg class="neon-sign" id="neonSign" viewBox="0 0 600 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Clicks By Wahab">
+        <!-- tube frame with a broken gap at lower right (sparks come from here) -->
+        <g class="neon-glow">
+          <path class="tube frame-outer frame-draw" pathLength="1" d="M570 318 V58 Q570 30 542 30 H58 Q30 30 30 58 V382 Q30 410 58 410 H400"/>
+          <path class="tube frame-inner frame-draw" pathLength="1" d="M570 318 V58 Q570 30 542 30 H58 Q30 30 30 58 V382 Q30 410 58 410 H400"/>
+        </g>
+
+        <!-- logo (full size, uncropped) -->
+        <svg class="neon-logo flick neon-glow" x="228" y="56" width="144" height="136" viewBox="0 0 185 185" style="color:#FFE9B0"><use href="#logo-icon"/></svg>
+
+        <!-- CLICKS -->
+        <g class="flick d2 neon-glow">
+          <text class="letters l-outer" x="300" y="274" text-anchor="middle" font-size="88">CLICKS</text>
+          <text class="letters l-inner" x="300" y="274" text-anchor="middle" font-size="88">CLICKS</text>
+        </g>
+
+        <!-- BY WAHAB -->
+        <g class="flick d3 neon-white">
+          <text class="letters w-outer" x="300" y="338" text-anchor="middle" font-size="42" letter-spacing="9">BY WAHAB</text>
+          <text class="letters w-inner" x="300" y="338" text-anchor="middle" font-size="42" letter-spacing="9">BY WAHAB</text>
+        </g>
+
+        <!-- PHOTOGRAPHY STUDIO -->
+        <text class="sub-text flick sub" x="300" y="388" text-anchor="middle" font-size="19" letter-spacing="13">PHOTOGRAPHY</text>
+      </svg>
     </div>
   </section>
 
@@ -1135,7 +1239,7 @@
     <div class="foot-grid">
       <div>
         <div class="foot-brand">
-          <img src="https://kommodo.ai/i/fC07Q2RTCESupczK7wC5" alt="Clicks By Wahab logo">
+          <svg class="logo-svg" role="img" aria-label="Clicks By Wahab logo"><use href="#logo-icon"/></svg>
           <h3>Clicks By Wahab</h3>
         </div>
         <p>Portrait, wedding, podcast and event photography in Lahore — capturing genuine moments with a creative, luxury eye.</p>
@@ -1263,11 +1367,79 @@
           service = inputs[3].value, message = inputs[4].value;
     const subject = encodeURIComponent('New Booking Enquiry — ' + service);
     const body = encodeURIComponent(
-      'Name: ' + name + '\\nPhone: ' + phone + '\\nEmail: ' + email +
-      '\\nService: ' + service + '\\n\\nMessage:\\n' + message
+      'Name: ' + name + '\nPhone: ' + phone + '\nEmail: ' + email +
+      '\nService: ' + service + '\n\nMessage:\n' + message
     );
     window.location.href = 'mailto:clicksbywahab@gmail.com?subject=' + subject + '&body=' + body;
   });
+
+  /* ---------- NEON SPARKS (hero) ---------- */
+  (function(){
+    const canvas = document.getElementById('sparkCanvas');
+    const sign = document.getElementById('neonSign');
+    if(!canvas || !sign) return;
+    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const ctx = canvas.getContext('2d');
+    let cw = 0, ch = 0, parts = [], lastT = 0, nextBurst = 0;
+    const colors = ['#ffffff','#FFF1CC','#ffb3cc','#ff7aa8','#ffd27a'];
+    const startAt = performance.now() + 3600;
+
+    function resize(){
+      const r = canvas.getBoundingClientRect();
+      const d = window.devicePixelRatio || 1;
+      cw = r.width; ch = r.height;
+      canvas.width = cw * d; canvas.height = ch * d;
+      ctx.setTransform(d,0,0,d,0,0);
+    }
+    function emitter(){
+      const c = canvas.getBoundingClientRect(), r = sign.getBoundingClientRect();
+      return { x: r.left - c.left + r.width * (485/600), y: r.top - c.top + r.height * (364/440), s: r.width/600 };
+    }
+    function burst(n, power){
+      const e = emitter();
+      for(let i=0;i<n;i++){
+        const a = (Math.random()*1.5 - 0.95) * Math.PI * 0.55 + 0.05;   // fan to the right / upward
+        const sp = (2 + Math.random()*6.5) * power * e.s;
+        parts.push({
+          x:e.x + (Math.random()-.5)*10, y:e.y + (Math.random()-.5)*10,
+          vx:Math.cos(a)*sp, vy:Math.sin(a)*sp - Math.random()*1.5,
+          life:0, max:.55 + Math.random()*1.1,
+          c:colors[(Math.random()*colors.length)|0], w:.8 + Math.random()*1.4
+        });
+      }
+    }
+    function frame(t){
+      requestAnimationFrame(frame);
+      const dt = Math.min((t - lastT)/1000, .05); lastT = t;
+      const home = document.getElementById('page-home');
+      if(document.hidden || !home || !home.classList.contains('active')) return;
+      if(!cw) resize();
+      ctx.clearRect(0,0,cw,ch);
+      if(t > startAt){
+        if(t > nextBurst){ burst(26 + (Math.random()*30|0), 1 + Math.random()*.6); nextBurst = t + 1800 + Math.random()*2600; }
+        if(Math.random() < .22) burst(2, .7);
+      }
+      ctx.globalCompositeOperation = 'lighter';
+      for(let i=parts.length-1;i>=0;i--){
+        const p = parts[i];
+        p.life += dt;
+        if(p.life > p.max){ parts.splice(i,1); continue; }
+        p.vy += 9 * dt * 6 * .12;             // gravity
+        p.vx *= .985;
+        const px = p.x, py = p.y;
+        p.x += p.vx * dt * 60 * .5; p.y += p.vy * dt * 60 * .5;
+        const k = 1 - p.life/p.max;
+        ctx.strokeStyle = p.c; ctx.globalAlpha = Math.max(k,0);
+        ctx.lineWidth = p.w; ctx.lineCap = 'round';
+        ctx.shadowColor = p.c; ctx.shadowBlur = 8;
+        ctx.beginPath(); ctx.moveTo(px - p.vx*.9, py - p.vy*.9); ctx.lineTo(p.x, p.y); ctx.stroke();
+      }
+      ctx.globalAlpha = 1; ctx.shadowBlur = 0; ctx.globalCompositeOperation = 'source-over';
+    }
+    window.addEventListener('resize', resize);
+    window.addEventListener('hashchange', function(){ setTimeout(resize, 60); });
+    requestAnimationFrame(frame);
+  })();
 </script>
 
 </body>
